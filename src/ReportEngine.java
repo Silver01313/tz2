@@ -8,7 +8,39 @@ public class ReportEngine {
 
     FileReader filereader = new FileReader();
 
-    ReportEngine() {
+    HashMap<Integer, String> nameOfMonth = new HashMap<>();
+
+    void nameOfMonth() {
+                nameOfMonth.put(1, "Январь");
+                nameOfMonth.put(2, "Февраль");
+                nameOfMonth.put(3, "Март");
+    }
+
+    void monthInformation(){
+        for (int i = 1; i < 4; i++){
+            System.out.println(nameOfMonth.get(i) + " : ");
+            MonthlyReport maxEarnings = monthlyReports.get(i);
+             Transaction maxEarning  = maxEarnings.getMaxEarning();
+                    System.out.println("Самый прибыльный товар : " + maxEarning.name + " - " + maxEarning.totalSum());
+            MonthlyReport maxExpenses = monthlyReports.get(i);
+            Transaction maxExpense  = maxEarnings.getMaxEarning();
+            System.out.println("Самвя большая трата : " + maxExpense.name + " - " + maxExpense.totalSum());
+
+
+        }
+    }
+
+    void yearInformation(){
+        System.out.println("Год - 2021");
+        System.out.println("Прибыль за : ");
+
+        for(int i = 1; i < 4; i++){
+
+            System.out.println(nameOfMonth.get(i) + " : " + yearlyReport.profit.get(i));
+        }
+        System.out.println("Средний расход : " + yearlyReport.getAverageExpenses());
+        System.out.println("Средний доход : " + yearlyReport.getAverageEarnings());
+
     }
 
     void ReadMonthlyReports() {
@@ -82,21 +114,24 @@ public class ReportEngine {
     }
 
     void matchReport() {
-if (monthlyReports.isEmpty() || yearlyReport == null) {
-    System.out.println("Считайте месячные и годовой отчеты.");
-}
+        if (monthlyReports.isEmpty() || yearlyReport == null) {
+            System.out.println("Считайте месячные и годовой отчеты.");
+        }
 
-for(int i = 1; i < 4; i++){
-    MonthlyReport month = monthlyReports.get(i);
-    MonthTotalPerYear total = yearlyReport.getTotalForMonth(i);
+        for (int i = 1; i < 4; i++) {
+            MonthlyReport month = monthlyReports.get(i);
+            MonthTotalPerYear total = yearlyReport.getTotalForMonth(i);
 
-    int expenses = month.sumOfExpenses();
-    int earnings = month.sumofEarnings();
+            int expenses = month.sumOfExpenses();
+            int earnings = month.sumOfEarnings();
 
-    if (expenses != total.expensesSum){
 
-    }
-}
+            if (expenses != total.expensesSum || earnings != total.earningsSum) {
+                System.out.println("Несоответствие в месяце : " + nameOfMonth.get(i));
+                return;
+            }
+            System.out.println("Завершено без ошибок.");
+        }
     }
 
 

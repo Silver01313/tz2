@@ -8,7 +8,9 @@ public class Transaction {
         this.quantity = quantity;
         this.unitPrice = unitPrice;
     }
+
     int totalSum() {
+
         return quantity * unitPrice;
     }
 }

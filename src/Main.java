@@ -14,7 +14,7 @@ import java.util.Scanner;
             System.out.println("3 - Сверить отчеты.");
             System.out.println("4 - Вывести информацию о всех месячных отчетах.");
             System.out.println("5 - Вывести информацию о годовом отчете.");
-            System.out.println("6 - Нажмите Esc для заверешения работы.");
+            System.out.println("Нажмите Enter для заверешения работы.");
 
             input = scanner.nextLine();
              if (input.equals("1")){
@@ -27,16 +27,15 @@ import java.util.Scanner;
                  System.out.println("Считывание завершено.");
              } else if (input.equals("3")) {
                  System.out.println("Сверка данных.");
-
-                 System.out.println("Сверка завершена без ошибок.");
+                 engine.matchReport();
              } else if (input.equals("4")) {
-                 System.out.println("Информация о месячных отчетах.");
-
+                 System.out.println("Информация о месячных отчетах : ");
+                 engine.monthInformation();
              } else if (input.equals("5")) {
-                 System.out.println("Информация о годовом отчете.");
-
-             } else if (input.equals("6")) {
-                 System.out.println("Работа завершена.");
+                 System.out.println("Информация о годовом отчете : ");
+                 engine.yearInformation();
+             } else if (input.equals("Enter")) {
+                 System.out.println("Завершение работы");
                  return;
              } else {
                  System.out.println("Такой команды не существует.");

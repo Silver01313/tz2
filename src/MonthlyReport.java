@@ -20,7 +20,7 @@ public class MonthlyReport {
         return countSum(expenses);
     }
 
-    int sumofEarnings() {
+    int sumOfEarnings() {
 
         return countSum(expenses);
     }

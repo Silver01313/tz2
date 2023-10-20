@@ -5,6 +5,8 @@ public class YearlyReport {
         this.monthTotals = monthTotals;
     }
 
+    HashMap<Integer, Integer> profit = new HashMap<>();
+
     int getAverageEarnings() {
         MonthTotalPerYear object;
         int sum = 0;
@@ -17,17 +19,24 @@ public class YearlyReport {
     }
 
     int getAverageExpenses() {
-
+        MonthTotalPerYear object;
+        int sum = 0;
+        for (int i = 0; i < monthTotals.size(); i++) {
+            object = monthTotals.get(i);
+            sum = sum + object.expensesSum;
+        }
+        sum = sum / monthTotals.size();
+        return sum;
     }
 
-    HashMap<Integer, Integer> profitPerMonth() {
-        HashMap<Integer, Integer> profit = new HashMap<>();
+    void profitPerMonth() {
+
 
         for (int i = 0; i < monthTotals.size(); i++){
             MonthTotalPerYear object = monthTotals.get(i);
             profit.put(i + 1 ,object.ProfitMonth());
         }
-        return profit;
+
     }
 
     MonthTotalPerYear getTotalForMonth(int month) {
