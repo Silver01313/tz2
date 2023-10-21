@@ -22,7 +22,7 @@ public class MonthlyReport {
 
     int sumOfEarnings() {
 
-        return countSum(expenses);
+        return countSum(earnings);
     }
 
     int countSum(ArrayList<Transaction> records) {
@@ -30,7 +30,7 @@ public class MonthlyReport {
         int sum = 0;
 
         for (int i = 0; i < records.size(); i++) {
-            Transaction object = records.get(0);
+            Transaction object = records.get(i);
             sum = object.totalSum() + sum;
         }
         return sum;
